@@ -17,7 +17,7 @@ const GRID_SVG = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
 const CAREER_STAGES = [
   {
     code: '01', titleEn: 'The Year of Innocence', titleCn: '《清白之年》',
-    roleEn: 'Writer, Director, Editor', roleCn: '编剧、导演、剪辑',
+    roleEn: 'Writer, Director, Producer', roleCn: '编剧、导演、制片人',
     descEn: 'A complete film-production proof: an original short film reaching 1.2M+ total views.',
     descCn: '以完整影视制作为方法验证：原创短片累计播放量超过 120 万。',
   },
@@ -74,6 +74,7 @@ export default function AboutSection() {
         <div className="absolute bottom-8 right-[calc(3.8vw+18px)] hidden font-mono-custom text-[8px] tracking-[0.16em] text-[#0A0A0A]/58 md:block">
           THE VIEW BECOMES THE METHOD
         </div>
+
       </div>
 
       {/* ── Background: ultra-fine coordinate grid, barely perceptible ── */}
@@ -198,6 +199,20 @@ export default function AboutSection() {
           </div>
 
         </div>
+
+        <SectionReveal delay={280}>
+          <aside className="mt-16 grid gap-6 border-t border-[#0A0A0A]/28 pt-7 md:grid-cols-[0.9fr_2.1fr]">
+            <p className="font-mono-custom text-[9px] tracking-[0.16em] text-[#687671]">
+              {t('WHAT THE PATH CHANGED', '\u8fd9\u6761\u8def\u5982\u4f55\u6539\u53d8\u4e86\u6211')}
+            </p>
+            <p className="max-w-3xl font-body text-sm leading-relaxed text-[#3d4d48] md:text-base">
+              {t(
+                'The same question has followed every chapter: how do you make a subjective creative decision legible enough for a team, a product and eventually a model to act on it? The work here documents my role and method. Sensitive product details are replaced by reconstructed systems and anonymized examples.',
+                '\u540c\u4e00\u4e2a\u95ee\u9898\u8d2f\u7a7f\u4e86\u6bcf\u4e00\u6bb5\u7ecf\u5386\uff1a\u5982\u4f55\u8ba9\u4e3b\u89c2\u7684\u521b\u4f5c\u5224\u65ad\u8db3\u591f\u6e05\u6670\uff0c\u4f9b\u56e2\u961f\u3001\u4ea7\u54c1\uff0c\u6700\u7ec8\u4e5f\u4f9b\u6a21\u578b\u6267\u884c\uff1f\u7f51\u7ad9\u53ea\u8bb0\u5f55\u6211\u7684\u89d2\u8272\u4e0e\u65b9\u6cd5\uff1b\u6d89\u53ca\u5185\u90e8\u4ea7\u54c1\u7684\u5185\u5bb9\uff0c\u4ee5\u91cd\u7ed8\u7cfb\u7edf\u548c\u533f\u540d\u6848\u4f8b\u5448\u73b0\u3002'
+              )}
+            </p>
+          </aside>
+        </SectionReveal>
       </div>
     </section>
   );

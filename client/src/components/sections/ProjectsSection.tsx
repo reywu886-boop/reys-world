@@ -25,11 +25,11 @@ type Project = {
 
 const PROJECTS: Project[] = [
   {
-    id: 'previz', number: '01', category: 'CREATIVE SYSTEMS', categoryZh: '\u521b\u4f5c\u7cfb\u7edf', title: 'LONG-FORM PRE-VIZ', titleZh: '\u957f\u89c6\u9891\u9884\u6f14',
-    role: 'Creative systems and production route', roleZh: '\u521b\u4f5c\u7cfb\u7edf\u4e0e\u751f\u4ea7\u8def\u7ebf',
-    question: 'How do generated shots retain one directing intention?', questionZh: '\u751f\u6210\u955c\u5934\u5982\u4f55\u4fdd\u6301\u540c\u4e00\u4e2a\u521b\u4f5c\u610f\u56fe\uff1f',
-    method: 'Script, assets, continuity and sequential video become one production route.', methodZh: '\u5267\u672c\u3001\u8d44\u4ea7\u3001\u8fde\u7eed\u6027\u4e0e\u5e8f\u5217\u89c6\u9891\u88ab\u7ec4\u7ec7\u4e3a\u540c\u4e00\u6761\u751f\u4ea7\u8def\u7ebf\u3002',
-    outcome: 'A repeatable route from story premise to a controllable pre-visualized sequence.', outcomeZh: '\u4ece\u6545\u4e8b\u547d\u9898\u5230\u53ef\u63a7\u9884\u6f14\u5e8f\u5217\u7684\u53ef\u590d\u7528\u8def\u7ebf\u3002', href: '/projects/ai-previz',
+    id: 'previz', number: '01', category: 'CREATIVE SYSTEMS', categoryZh: '\u521b\u4f5c\u7cfb\u7edf', title: 'SCRIPT-TO-STORYBOARD PIPELINE', titleZh: '\u5267\u672c\u5230\u5206\u955c\u7ba1\u7ebf',
+    role: 'AIGC product planning and production route', roleZh: 'AIGC \u4ea7\u54c1\u7b56\u5212\u4e0e\u521b\u4f5c\u8def\u7ebf',
+    question: 'How can a screenplay become a controllable chain of scenes, assets and shots?', questionZh: '\u5982\u4f55\u628a\u5267\u672c\u53d8\u6210\u53ef\u63a7\u7684\u573a\u666f\u3001\u8d44\u4ea7\u4e0e\u955c\u5934\u94fe\u8def\uff1f',
+    method: 'I helped split directing work into visible stages: story understanding, asset extraction, visual direction, shot planning, generation and local revision.', methodZh: '\u6211\u53c2\u4e0e\u628a\u5bfc\u6f14\u5de5\u4f5c\u62c6\u6210\u53ef\u89c1\u8282\u70b9\uff1a\u5267\u60c5\u7406\u89e3\u3001\u8d44\u4ea7\u63d0\u53d6\u3001\u89c6\u89c9\u8bbe\u5b9a\u3001\u955c\u5934\u89c4\u5212\u3001\u751f\u6210\u4e0e\u5c40\u90e8\u56de\u4fee\u3002',
+    outcome: 'A reusable workflow that keeps context and human review present across the route.', outcomeZh: '\u5f62\u6210\u4e00\u6761\u80fd\u4fdd\u7559\u4e0a\u4e0b\u6587\u4e0e\u4eba\u5de5\u5ba1\u9605\u7684\u53ef\u590d\u7528\u5de5\u4f5c\u6d41\u3002', href: '/projects/ai-previz',
     frames: [
       { label: 'INPUT', labelZh: '\u8f93\u5165', title: 'Script premise', titleZh: '\u5267\u672c\u547d\u9898', copy: 'Narrative intent and visual constraints enter together.', copyZh: '\u53d9\u4e8b\u610f\u56fe\u4e0e\u89c6\u89c9\u7ea6\u675f\u4e00\u8d77\u8fdb\u5165\u7cfb\u7edf\u3002', image: '/previz-storyboard-original.webp' },
       { label: 'SYSTEM', labelZh: '\u7cfb\u7edf', title: 'Continuity route', titleZh: '\u8fde\u7eed\u6027\u8def\u7ebf', copy: 'Assets travel across shots without losing their logic.', copyZh: '\u8d44\u4ea7\u5728\u4e0d\u540c\u955c\u5934\u95f4\u8f6c\u79fb\uff0c\u4ecd\u4fdd\u6301\u5404\u81ea\u7684\u903b\u8f91\u3002', image: '/previz-storyboard-director-rag.webp' },
@@ -37,11 +37,11 @@ const PROJECTS: Project[] = [
     ],
   },
   {
-    id: 'storyboard', number: '02', category: 'CREATIVE SYSTEMS', categoryZh: '\u521b\u4f5c\u7cfb\u7edf', title: 'STORYBOARD SYSTEM', titleZh: '\u5206\u955c\u751f\u6210\u7cfb\u7edf',
-    role: 'Director strategy and multi-agent design', roleZh: '\u5bfc\u6f14\u7b56\u7565\u4e0e\u591a\u667a\u80fd\u4f53\u8bbe\u8ba1',
-    question: 'Can a system retrieve style without flattening direction?', questionZh: '\u7cfb\u7edf\u80fd\u5426\u68c0\u7d22\u98ce\u683c\uff0c\u540c\u65f6\u4e0d\u628a\u5bfc\u6f14\u5224\u65ad\u62c9\u5e73\uff1f',
+    id: 'storyboard', number: '02', category: 'CREATIVE SYSTEMS', categoryZh: '\u521b\u4f5c\u7cfb\u7edf', title: 'DIRECTOR CAPABILITY', titleZh: '\u5bfc\u6f14\u80fd\u529b\u6a21\u5757',
+    role: 'Director strategy and creative-agent design', roleZh: '\u5bfc\u6f14\u7b56\u7565\u4e0e\u521b\u4f5c Agent \u8bbe\u8ba1',
+    question: 'Can a system make directing judgment reusable without flattening it into one prompt?', questionZh: '\u7cfb\u7edf\u80fd\u5426\u8ba9\u5bfc\u6f14\u5224\u65ad\u53ef\u590d\u7528\uff0c\u540c\u65f6\u4e0d\u628a\u5b83\u62c9\u5e73\u6210\u4e00\u4e2a Prompt\uff1f',
     method: 'Directing, cinematography, art direction and editing review one scene from different positions.', methodZh: '\u5bfc\u6f14\u3001\u6444\u5f71\u3001\u7f8e\u672f\u548c\u526a\u8f91\u4ece\u4e0d\u540c\u7acb\u573a\u5ba1\u89c6\u540c\u4e00\u573a\u620f\u3002',
-    outcome: 'A storyboard route that keeps creative disagreement visible and reviewable.', outcomeZh: '\u4e00\u6761\u4fdd\u7559\u521b\u4f5c\u5206\u6b67\u3001\u53c8\u53ef\u4ee5\u5ba1\u9605\u7684\u5206\u955c\u8def\u7ebf\u3002', href: '/projects/ai-storyboard',
+    outcome: 'A reviewable route where creative positions stay visible rather than being buried in a single output.', outcomeZh: '\u5f62\u6210\u4e00\u6761\u53ef\u5ba1\u9605\u7684\u8def\u7ebf\uff0c\u8ba9\u521b\u4f5c\u7acb\u573a\u4fdd\u6301\u53ef\u89c1\uff0c\u800c\u4e0d\u88ab\u4e00\u6b21\u8f93\u51fa\u6df9\u6ca1\u3002', href: '/projects/ai-storyboard',
     frames: [
       { label: 'INPUT', labelZh: '\u8f93\u5165', title: 'Directing brief', titleZh: '\u5bfc\u6f14\u7b80\u62a5', copy: 'The scene begins with dramatic intention, not a generic prompt.', copyZh: '\u4e00\u573a\u620f\u4ece\u620f\u5267\u610f\u56fe\u5f00\u59cb\uff0c\u800c\u4e0d\u662f\u4e00\u4e2a\u6cdb\u5316\u63d0\u793a\u8bcd\u3002', image: '/storyboard-cover.webp' },
       { label: 'SYSTEM', labelZh: '\u7cfb\u7edf', title: 'Creative positions', titleZh: '\u521b\u4f5c\u7acb\u573a', copy: 'Specialist viewpoints challenge and refine the same shot list.', copyZh: '\u4e13\u4e1a\u89c6\u89d2\u5bf9\u540c\u4e00\u4efd\u5206\u955c\u63d0\u51fa\u8d28\u7591\u4e0e\u4fee\u6b63\u3002', image: '/storyboard-crew.webp' },
@@ -101,7 +101,7 @@ export default function ProjectsSection() {
         <header className="max-w-3xl">
           <div className="mb-5 flex items-center gap-4"><span className="section-number">03</span><div className="editorial-line w-20" /></div>
           <h2 className="font-heading text-4xl font-700 leading-[0.95] tracking-tight text-[#0A0A0A] md:text-7xl">{t('Selected systems for moving images.', '\u4e3a\u8fd0\u52a8\u5f71\u50cf\u800c\u505a\u7684\u7cfb\u7edf\u3002')}</h2>
-          <p className="mt-6 max-w-[58ch] font-body text-sm leading-relaxed text-[#53605d] md:text-base">{t('Four projects, from moving-image creation to AI products and model data strategy.', '\u56db\u4e2a\u9879\u76ee\uff0c\u4ece\u8fd0\u52a8\u5f71\u50cf\u521b\u4f5c\u5230 AI \u4ea7\u54c1\u4e0e\u6a21\u578b\u6570\u636e\u7b56\u7565\u3002')}</p>
+          <p className="mt-6 max-w-[58ch] font-body text-sm leading-relaxed text-[#53605d] md:text-base">{t('Four connected chapters: directing a film, adapting content for generation, designing creation agents, and turning film judgment into model-ready data.', '\u56db\u4e2a\u8fde\u7eed\u7ae0\u8282\uff1a\u4ece\u5bfc\u6f14\u4e00\u90e8\u77ed\u7247\uff0c\u5230\u8ba9\u5185\u5bb9\u9002\u5e94\u751f\u6210\uff0c\u8bbe\u8ba1\u521b\u4f5c Agent\uff0c\u518d\u5230\u628a\u5f71\u89c6\u5224\u65ad\u8f6c\u4e3a\u6a21\u578b\u53ef\u7528\u6570\u636e\u3002')}</p>
         </header>
 
         <nav className="mt-14 grid border-y border-[#0A0A0A]/18 md:grid-cols-4" aria-label="Project index">

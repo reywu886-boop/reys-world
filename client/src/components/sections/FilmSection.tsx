@@ -136,8 +136,8 @@ export default function FilmSection() {
                     <span className="text-[#AAAAAA] text-xs font-body mt-1 block tracking-wide">{t('Total Views', '总播放量')}</span>
                   </div>
                   <div>
-                    <span className="font-heading font-700 text-[#0A0A0A] text-2xl md:text-3xl block">1M+</span>
-                    <span className="text-[#AAAAAA] text-xs font-body mt-1 block tracking-wide">{t('Bilibili Views', 'B站播放量')}</span>
+                    <span className="font-heading font-700 text-[#0A0A0A] text-2xl md:text-3xl block">18 MIN</span>
+                    <span className="text-[#AAAAAA] text-xs font-body mt-1 block tracking-wide">{t('Original Short Film', '\u539f\u521b\u77ed\u7247')}</span>
                   </div>
                 </div>
                 {/* Credits */}
@@ -145,7 +145,7 @@ export default function FilmSection() {
                   {[
                     { role: t('Writer', '编剧'), name: 'Rey Wu' },
                     { role: t('Director', '导演'), name: 'Rey Wu' },
-                    { role: t('Editor', '剪辑'), name: 'Rey Wu' },
+                    { role: t('Producer', '\u5236\u7247\u4eba'), name: 'Rey Wu' },
                   ].map((credit, i) => (
                     <div key={i} className="flex flex-col">
                       <span className="text-[#AAAAAA] text-[10px] font-body tracking-widest uppercase">{credit.role}</span>
@@ -157,6 +157,22 @@ export default function FilmSection() {
             </SectionReveal>
           </div>
         </div>
+
+        <SectionReveal delay={220}>
+          <aside className="mb-16 grid gap-6 border-y border-[#0A0A0A]/25 py-8 md:grid-cols-[0.9fr_2.1fr]">
+            <p className="font-mono-custom text-[9px] tracking-[0.16em] text-[#687671]">
+              {t('THE FIRST SYSTEM', '\u7b2c\u4e00\u5957\u7cfb\u7edf')}
+            </p>
+            <div className="max-w-3xl">
+              <p className="font-heading text-2xl leading-tight text-[#0A0A0A] md:text-3xl">
+                {t('The film was where I learned that creative judgment only matters when a team can act on it.', '\u8fd9\u90e8\u7535\u5f71\u8ba9\u6211\u660e\u767d\uff1a\u521b\u4f5c\u5224\u65ad\u53ea\u6709\u5728\u56e2\u961f\u80fd\u591f\u6267\u884c\u65f6\uff0c\u624d\u771f\u6b63\u6709\u610f\u4e49\u3002')}
+              </p>
+              <p className="mt-4 font-body text-sm leading-relaxed text-[#3d4d48] md:text-base">
+                {t('I prioritized shots around emotional value, then turned scenes, light, cast and camera needs into an executable three-day plan. That production logic later became the foundation for the systems shown elsewhere on this site.', '\u6211\u56f4\u7ed5\u60c5\u7eea\u4ef7\u503c\u8bbe\u7f6e\u955c\u5934\u4f18\u5148\u7ea7\uff0c\u5e76\u628a\u573a\u666f\u3001\u5149\u7ebf\u3001\u6f14\u5458\u4e0e\u6444\u5f71\u9700\u6c42\u53d8\u6210\u4e00\u4efd\u53ef\u6267\u884c\u7684\u4e09\u5929\u62cd\u6444\u8ba1\u5212\u3002\u8fd9\u5957\u5236\u4f5c\u903b\u8f91\uff0c\u540e\u6765\u6210\u4e3a\u672c\u7ad9\u5176\u4ed6\u7cfb\u7edf\u7684\u57fa\u7840\u3002')}
+              </p>
+            </div>
+          </aside>
+        </SectionReveal>
 
         {/* Video embed — full width below */}
         <SectionReveal delay={300}>
