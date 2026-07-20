@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RuleLoop · 今日更新</title>
+<link rel="stylesheet" href="assets/styles.css">
+<style>.board-wrap{flex:1;padding:24px 32px;min-width:0}.hero{background:linear-gradient(135deg,#1E5EFF,#5B8DFF);border-radius:12px;padding:24px 28px;color:#fff}.result-card{margin-top:20px;background:#fff;border:1px solid var(--rl-border);border-radius:8px;padding:22px}.track{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rl-border);border:1px solid var(--rl-border);border-radius:8px;overflow:hidden;margin-top:18px}.track div{background:#fff;padding:14px;font-size:12px}.track b{display:block;margin-bottom:6px;font-size:13px}@media(max-width:780px){.track{grid-template-columns:1fr 1fr}.board-wrap{padding:18px}}</style>
+</head>
+<body>
+<div id="topbar"></div>
+<div style="display:flex"><div id="sidebar"></div><main class="board-wrap">
+  <section class="hero"><div style="font-size:20px;font-weight:600" id="heroTitle">相关更新已经返回标注工作台</div><div style="margin-top:7px;font-size:13px;opacity:.88" id="heroCopy">CASE-A017 已完成产品审核，标注员可以继续处理任务。</div></section>
+  <article class="result-card">
+    <div style="display:flex;align-items:start;justify-content:space-between;gap:16px"><div><span style="font-size:12px;color:var(--rl-text-3)">CASE-A017</span><h2 style="margin:7px 0 0;font-size:18px" id="resultTitle">规则更新已发布</h2></div><span class="rl-tag rl-tag-green" id="resultTag">已发布</span></div>
+    <p style="margin:16px 0 0;color:var(--rl-text-2);font-size:13px;line-height:1.8">本次处理结果已回到标注现场，原始问题、质检结论和产品决策仍然关联在同一个 Case 下。</p>
+    <div class="track"><div><b>标注员</b>从当前任务提交问题</div><div><b>案例池</b>保存来源与处理状态</div><div><b>质检员</b>完成答疑或升级</div><div><b>产品成员</b>审核并发布更新</div></div>
+    <div style="margin-top:20px;display:flex;gap:10px"><a href="annotator-task.html" class="rl-btn rl-btn-primary">回到标注工作台</a><a href="case-pool.html" class="rl-btn rl-btn-secondary">查看案例轨迹</a></div>
+  </article>
+</main></div>
+<script src="assets/common.js"></script>
+<script>
+localStorage.setItem('rl_role','annotator');
+document.getElementById('topbar').innerHTML=renderTopbar([{label:'项目库',href:'projects.html'},{label:'视频基础质量分级',href:'project-overview.html'},{label:'今日更新'}]);
+document.getElementById('sidebar').innerHTML=renderProjectSidebar('视频基础质量分级','board','today');
+if(new URLSearchParams(location.search).get('result')==='answered'){document.getElementById('heroTitle').textContent='质检答复已经返回标注工作台';document.getElementById('heroCopy').textContent='CASE-A017 已由质检员完成答疑，标注员可以继续处理任务。';document.getElementById('resultTitle').textContent='问题已答复';document.getElementById('resultTag').textContent='已答复'}
+</script>
+</body></html>

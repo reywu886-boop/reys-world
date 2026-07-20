@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RuleLoop · 案例池</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+.pool-main{flex:1;padding:24px 32px;min-width:0}.pool-filter{padding:6px 14px;border:0;background:transparent;border-radius:4px;font-size:12px;color:var(--rl-text-2);cursor:pointer}.pool-filter.active{background:var(--rl-primary-bg);color:var(--rl-primary);font-weight:600}.case-card{padding:0;overflow:hidden;border-left:3px solid transparent;transition:box-shadow .16s,border-color .16s}.case-card:hover{box-shadow:0 8px 24px rgba(31,45,38,.08)}.case-card.waiting{border-left-color:var(--rl-warning)}.case-card.reviewing{border-left-color:var(--rl-primary)}.case-card.done{border-left-color:var(--rl-success)}.case-card.returned{border-left-color:var(--rl-danger)}.case-head{padding:13px 16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}.case-summary{padding:0 16px 14px;font-size:12px;color:var(--rl-text-2);line-height:1.7}.case-detail{display:none;padding:0 16px 15px}.case-card.open .case-detail{display:block}.case-card.open .case-summary{display:none}.case-track{border-left:1px solid #d6dce5;margin:2px 0 10px 7px;padding-left:18px}.case-track div{position:relative;padding:0 0 11px;font-size:12px;color:var(--rl-text-2)}.case-track div:before{content:'';position:absolute;left:-23px;top:3px;width:8px;height:8px;border-radius:50%;background:#2f72ee;border:2px solid #fff;box-shadow:0 0 0 1px #a9bfec}@media(max-width:720px){.pool-main{padding:18px}.case-head{align-items:flex-start}.case-head>span:last-child{margin-left:0!important}}
+</style>
+</head>
+<body>
+<div id="topbar"></div>
+<div style="display:flex"><div id="sidebar"></div><main class="pool-main">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;gap:16px;flex-wrap:wrap">
+    <div><div style="font-size:20px;font-weight:600">案例池</div><div style="font-size:13px;color:var(--rl-text-3);margin-top:4px">所有角色围绕同一个 Case 查看来源、处理状态和结果。</div></div>
+    <a href="annotator-task.html" class="rl-btn rl-btn-primary">+ 从标注台提交</a>
+  </div>
+  <div style="display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap" id="filters">
+    <button class="pool-filter active" data-filter="all">全部 26</button><button class="pool-filter" data-filter="waiting">待答疑 3</button><button class="pool-filter" data-filter="reviewing">答疑中 2</button><button class="pool-filter" data-filter="done">已答疑 12</button><button class="pool-filter" data-filter="decision">规则评审 1</button>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:12px" id="caseList">
+    <article class="rl-card case-card waiting" data-state="waiting" id="case-a017">
+      <div class="case-head"><button class="case-link" style="border:0;background:none;padding:0;color:var(--rl-primary);font-weight:600;cursor:pointer">CASE-A017</button><span class="rl-tag rl-tag-gray">规则疑问</span><span style="font-size:12px;color:var(--rl-text-3)">来源：标注工作台 · 关联片段 00:08 - 00:13</span><span style="flex:1"></span><span class="rl-tag rl-tag-orange">待答疑</span><span style="font-size:12px;color:var(--rl-text-3)">刚刚</span></div>
+      <div class="case-summary">当前说明无法覆盖这个 Case。已带入素材位置、所选字段和标注任务上下文。</div>
+      <div class="case-detail"><div class="case-track"><div>标注员从任务现场提交问题</div><div>案例池已归档来源与上下文</div><div>等待质检员答疑或升级产品判断</div></div><div style="display:flex;gap:8px"><a href="qa-console.html" class="rl-btn rl-btn-primary rl-btn-sm">进入答疑看板</a><a href="annotator-task.html" class="rl-btn rl-btn-secondary rl-btn-sm">查看原任务</a></div></div>
+    </article>
+    <article class="rl-card case-card reviewing" data-state="reviewing">
+      <div class="case-head"><button class="case-link" style="border:0;background:none;padding:0;color:var(--rl-primary);font-weight:600;cursor:pointer">CASE-A009</button><span class="rl-tag rl-tag-gray">边界澄清</span><span style="font-size:12px;color:var(--rl-text-3)">来源：质检答疑</span><span style="flex:1"></span><span class="rl-tag rl-tag-blue">规则评审</span><span style="font-size:12px;color:var(--rl-text-3)">今天 10:24</span></div>
+      <div class="case-summary">质检已确认需要进一步评审，产品成员正在查看 Case 轨迹和修改建议。</div>
+      <div class="case-detail"><div class="case-track"><div>质检答疑无法稳定覆盖当前场景</div><div>已升级产品成员审核</div><div>等待处理建议发布或退回</div></div><a href="pm-decisions.html?case=A009" class="rl-btn rl-btn-secondary rl-btn-sm">打开决策面板</a></div>
+    </article>
+    <article class="rl-card case-card returned" data-state="returned">
+      <div class="case-head"><button class="case-link" style="border:0;background:none;padding:0;color:var(--rl-primary);font-weight:600;cursor:pointer">CASE-A011</button><span class="rl-tag rl-tag-gray">边界澄清</span><span style="font-size:12px;color:var(--rl-text-3)">来源：批量提交</span><span style="flex:1"></span><span class="rl-tag rl-tag-red">已退回</span><span style="font-size:12px;color:var(--rl-text-3)">昨天 16:20</span></div>
+      <div class="case-summary">提交内容与已有 Case 的触发场景重合，需要补充不同的素材上下文或例外情况。</div>
+      <div class="case-detail"><div class="rl-dup-banner rl-dup-high" style="margin:0 0 12px"><div class="rl-dup-icon"></div><div style="flex:1"><div style="font-weight:600;margin-bottom:4px">处理意见：补充新的上下文后再提交</div><div style="opacity:.85;font-weight:400">系统保留这次提交和处理意见，便于标注员从原 Case 继续补充。</div></div></div><a href="lab-upload.html" class="rl-btn rl-btn-primary rl-btn-sm">补充内容重新提交</a></div>
+    </article>
+    <article class="rl-card case-card done" data-state="done">
+      <div class="case-head"><button class="case-link" style="border:0;background:none;padding:0;color:var(--rl-primary);font-weight:600;cursor:pointer">CASE-A014</button><span class="rl-tag rl-tag-gray">标注答疑</span><span style="font-size:12px;color:var(--rl-text-3)">来源：标注工作台</span><span style="flex:1"></span><span class="rl-tag rl-tag-green">已答疑</span><span style="font-size:12px;color:var(--rl-text-3)">32 分钟前</span></div>
+      <div class="case-summary">质检答复已返回原任务，同类问题可以从该 Case 查看处理依据。</div>
+      <div class="case-detail"><div class="case-track"><div>问题进入案例池</div><div>质检引用已有结论完成答复</div><div>结果已回到提交任务</div></div><a href="annotator-task.html" class="rl-btn rl-btn-secondary rl-btn-sm">回到任务现场</a></div>
+    </article>
+    <article class="rl-card case-card" data-state="processing">
+      <div class="case-head"><button class="case-link" style="border:0;background:none;padding:0;color:var(--rl-primary);font-weight:600;cursor:pointer">CASE-A021</button><span class="rl-tag rl-tag-gray">待解析</span><span style="font-size:12px;color:var(--rl-text-3)">来源：讨论纪要</span><span style="flex:1"></span><span class="rl-tag rl-tag-blue">AI 处理中</span><span style="font-size:12px;color:var(--rl-text-3)">昨天 11:30</span></div>
+      <div class="case-summary">正在提取讨论中的问题、结论和待确认项，并匹配可能相关的历史 Case。</div>
+    </article>
+  </div>
+</main></div>
+<script src="assets/common.js"></script>
+<script>
+document.getElementById('topbar').innerHTML=renderTopbar([{label:'案例池'}]);
+document.getElementById('sidebar').innerHTML=renderLabelDemoSidebar('annotator','pool');
+document.querySelectorAll('.case-link').forEach(btn=>btn.onclick=()=>btn.closest('.case-card').classList.toggle('open'));
+document.querySelectorAll('.pool-filter').forEach(btn=>btn.onclick=()=>{document.querySelectorAll('.pool-filter').forEach(x=>x.classList.remove('active'));btn.classList.add('active');const key=btn.dataset.filter;document.querySelectorAll('.case-card').forEach(card=>card.style.display=(key==='all'||card.dataset.state===key||(key==='decision'&&card.dataset.state==='reviewing'))?'block':'none')});
+if(location.search.includes('case=A017'))document.getElementById('case-a017').classList.add('open');
+</script>
+</body></html>

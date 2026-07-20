@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>RuleLoop · 标注工作台</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+.task-main{display:grid;grid-template-columns:minmax(0,1fr) 340px;min-height:calc(100vh - 56px)}.task-fields{padding:20px;background:#f5f7fa}.field-card{background:#fff;border:1px solid #e7eaf0;border-radius:8px;padding:18px;margin-bottom:14px}.field-card.active{border-color:#91b4ff;box-shadow:0 0 0 2px #edf3ff}.field-lines span{display:block;height:9px;background:#eceef3;border-radius:3px;margin-top:10px}.question-drawer{position:fixed;z-index:20;right:0;top:56px;bottom:0;width:min(460px,100vw);background:#fff;border-left:1px solid #d9dee8;box-shadow:-18px 0 44px rgba(15,23,42,.14);padding:22px;transform:translateX(102%);transition:transform .22s}.question-drawer.open{transform:translateX(0)}.context-chip{padding:10px 12px;border:1px solid #dbe4f7;border-radius:6px;background:#f7faff;font-size:12px;color:#566474}.task-side{border-left:1px solid #e4e7ec;padding:20px;background:#fff}.video-sample{height:190px;border-radius:8px;background:linear-gradient(135deg,#1e2935,#0d1621);display:flex;align-items:center;justify-content:center;color:#cad3de;font-size:13px}.time-chip{display:inline-block;padding:3px 7px;border-radius:4px;background:#edf3ff;color:#2468d6;font-size:11px;font-weight:600}@media(max-width:900px){.task-main{grid-template-columns:1fr}.task-side{border-left:0;border-top:1px solid #e4e7ec}}
+</style>
+</head>
+<body>
+<div id="topbar"></div>
+<div style="display:flex"><div id="sidebar"></div><div style="flex:1;min-width:0">
+  <div style="height:56px;padding:0 18px;border-bottom:1px solid var(--rl-border);display:flex;align-items:center;gap:12px;background:#fff"><a href="javascript:void(0)" id="back" style="text-decoration:none;color:var(--rl-text-2)">←</a><strong>标注任务 · 示例任务 017</strong><span class="rl-tag rl-tag-gray">第 17 / 40 条</span><span style="flex:1"></span><button class="rl-btn rl-btn-secondary" id="ask">提规则疑问</button><button class="rl-btn rl-btn-primary" id="save">保存标注</button></div>
+  <div class="task-main">
+    <main class="task-fields"><div style="display:flex;gap:18px;font-size:12px;color:var(--rl-text-3);border-bottom:1px solid #e6e9ee;padding-bottom:12px;margin-bottom:18px"><span>标注任务 › 当前数据包</span><span>全部字段</span><strong style="color:var(--rl-primary)">当前字段</strong><span style="margin-left:auto">内容编号：CASE-A017</span></div>
+      <section class="field-card active"><h3 style="margin:0;font-size:16px">主体与场景</h3><p style="font-size:12px;color:var(--rl-text-3);margin:7px 0 0">已填写字段和素材上下文会随问题一并关联。</p><div class="field-lines"><span></span><span style="width:82%"></span><span style="width:55%"></span></div></section>
+      <section class="field-card"><h3 style="margin:0;font-size:16px">动作与状态</h3><div class="field-lines"><span></span><span style="width:70%"></span></div></section>
+      <section class="field-card"><h3 style="margin:0;font-size:16px">镜头与构图</h3><div class="field-lines"><span></span><span></span><span style="width:58%"></span></div></section>
+      <p style="font-size:12px;color:var(--rl-text-3);margin-top:18px">示例任务仅展示字段结构，不包含业务标注内容。</p>
+    </main>
+    <aside class="task-side"><h3 style="margin:0 0 12px">视频参考</h3><div class="video-sample">演示素材预览</div><div style="margin-top:12px"><span class="time-chip">00:08 - 00:13</span><span style="font-size:12px;color:var(--rl-text-3);margin-left:8px">当前疑问关联片段</span></div><h3 style="margin:25px 0 12px">批注列表（2）</h3><div class="rl-card" style="padding:12px;margin-bottom:10px"><span class="rl-tag rl-tag-orange">待确认</span><p style="font-size:13px;margin:9px 0 0">当前字段存在一处拿不准的判断。</p></div><div class="rl-card" style="padding:12px"><span class="rl-tag rl-tag-blue">已修改</span><p style="font-size:13px;margin:9px 0 0">一处标注结果已保存。</p></div></aside>
+  </div>
+</div></div>
+<aside class="question-drawer" id="drawer"><div style="display:flex;justify-content:space-between;align-items:center"><strong style="font-size:18px">提交规则疑问</strong><button class="rl-btn rl-btn-ghost" id="close">×</button></div><p style="font-size:13px;color:var(--rl-text-3);line-height:1.7">从当前任务发起，提交时会自动带上相关信息。</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:18px 0"><div class="context-chip">当前素材<br><strong>演示片段</strong></div><div class="context-chip">任务位置<br><strong>00:08 - 00:13</strong></div><div class="context-chip">标注结果<br><strong>已关联</strong></div><div class="context-chip">所选字段<br><strong>镜头与构图</strong></div></div><label style="display:block;font-size:13px;font-weight:600;margin-bottom:8px">具体疑问</label><textarea style="width:100%;min-height:130px;border:1px solid #d9dee8;border-radius:6px;padding:12px;resize:vertical;font:inherit">这个 Case 在当前说明下无法确定，应该如何处理？</textarea><p style="font-size:12px;color:var(--rl-text-3);line-height:1.7">系统会保留任务、片段和问题之间的关联，方便后续答疑和追溯。</p><div style="display:flex;justify-content:flex-end;gap:8px;margin-top:22px"><button class="rl-btn rl-btn-secondary" id="cancel">取消</button><a class="rl-btn rl-btn-primary" href="case-pool.html?case=A017">提交到案例池</a></div></aside>
+<script src="assets/common.js"></script>
+<script>document.getElementById('topbar').innerHTML=renderTopbar([{label:'标注工作台'}]);document.getElementById('sidebar').innerHTML=renderLabelDemoSidebar('annotator','desk');document.getElementById('back').onclick=()=>history.length>1?history.back():location.href='home.html';const d=document.getElementById('drawer');document.getElementById('ask').onclick=()=>d.classList.add('open');['close','cancel'].forEach(id=>document.getElementById(id).onclick=()=>d.classList.remove('open'));document.getElementById('save').onclick=()=>{document.getElementById('save').textContent='已保存';setTimeout(()=>document.getElementById('save').textContent='保存标注',1200)};</script>
+</body>
+</html>

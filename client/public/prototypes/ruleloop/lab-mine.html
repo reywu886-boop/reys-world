@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>RuleLoop · 我的提交</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div id="topbar"></div>
+<div style="display:flex;">
+  <div id="sidebar"></div>
+  <div style="flex:1;padding:24px 32px;min-width:0;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+      <div>
+        <div style="font-size:20px;font-weight:600;">我的提交</div>
+        <div style="font-size:13px;color:var(--rl-text-3);margin-top:4px;">追踪每条提交案例的处理状态。被退回的会显示原因，可继续讨论或重新提交。</div>
+      </div>
+      <a href="lab-upload.html" class="rl-btn rl-btn-primary">+ 提交新案例</a>
+    </div>
+    <div style="display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap;">
+      <button class="rl-tag rl-tag-blue filter active" style="padding:6px 14px;cursor:pointer;font-size:13px;">全部 26</button>
+      <button class="filter" style="padding:6px 14px;border-radius:4px;font-size:12px;color:var(--rl-text-2);cursor:pointer;">AI 处理中 1</button>
+      <button class="filter" style="padding:6px 14px;border-radius:4px;font-size:12px;color:var(--rl-text-2);cursor:pointer;">已草稿 5</button>
+      <button class="filter" style="padding:6px 14px;border-radius:4px;font-size:12px;color:var(--rl-text-2);cursor:pointer;">审核中 8</button>
+      <button class="filter" style="padding:6px 14px;border-radius:4px;font-size:12px;color:var(--rl-text-2);cursor:pointer;">已通过 10</button>
+      <button class="filter" style="padding:6px 14px;border-radius:4px;font-size:12px;color:var(--rl-danger);cursor:pointer;">已退回 2</button>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div class="rl-card" style="padding:0;overflow:hidden;border-left:3px solid var(--rl-danger);">
+        <div style="padding:12px 16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+          <a href="case-pool.html" style="color:var(--rl-primary);text-decoration:none;font-weight:500;">CASE-A011</a>
+          <span class="rl-tag rl-tag-gray">边界澄清</span><div style="flex:1"></div><span class="rl-tag rl-tag-red">已退回</span><span style="font-size:12px;color:var(--rl-text-3);">今天 16:20</span>
+        </div>
+        <div style="padding:0 16px 14px;">
+          <div class="rl-dup-banner rl-dup-high" style="margin:0;"><div class="rl-dup-icon"></div><div style="flex:1;"><div style="font-weight:600;margin-bottom:4px;">退回原因：已有 Case 已覆盖相同判断场景</div><div style="opacity:.85;font-weight:400;">建议补充不同的触发条件、素材上下文或例外情况，再重新提交。</div></div></div>
+          <div style="margin-top:10px;display:flex;gap:8px;"><a href="case-pool.html" class="rl-btn rl-btn-secondary rl-btn-sm">查看处理详情</a><a href="lab-upload.html" class="rl-btn rl-btn-primary rl-btn-sm">补充上下文重新提交</a></div>
+        </div>
+      </div>
+      <div class="rl-card" style="padding:12px 16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;"><a href="case-pool.html" style="color:var(--rl-primary);text-decoration:none;font-weight:500;">CASE-A017</a><span class="rl-tag rl-tag-gray">规则疑问</span><div style="font-size:12px;color:var(--rl-text-2);max-width:340px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;">当前说明无法覆盖这个 Case，等待产品判断…</div><span class="rl-tag rl-tag-orange">审核中</span><span style="font-size:12px;color:var(--rl-text-3);">今天 10:45</span></div>
+      <div class="rl-card" style="padding:12px 16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;border-left:3px solid var(--rl-success);"><a href="case-pool.html" style="color:var(--rl-primary);text-decoration:none;font-weight:500;">CASE-A014</a><span class="rl-tag rl-tag-gray">标注答疑</span><div style="font-size:12px;color:var(--rl-text-2);max-width:340px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;">已有处理结论已返回任务现场…</div><span class="rl-tag rl-tag-green">已通过</span><span style="font-size:12px;color:var(--rl-text-3);">今天 09:30</span></div>
+      <div class="rl-card" style="padding:12px 16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;"><a href="case-pool.html" style="color:var(--rl-primary);text-decoration:none;font-weight:500;">CASE-A021</a><span style="font-size:12px;color:var(--rl-text-3);">解析中，AI 正在归纳案例的来源、上下文与相似记录</span><div style="flex:1"></div><span class="rl-tag rl-tag-blue">AI 处理中</span><span style="font-size:12px;color:var(--rl-text-3);">昨天 11:30</span></div>
+    </div>
+  </div>
+</div>
+<script src="assets/common.js"></script>
+<script>
+document.getElementById('topbar').innerHTML = renderTopbar([{label:'项目库',href:'projects.html'},{label:'视频基础质量分级',href:'project-overview.html'},{label:'我的提交'}]);
+document.getElementById('sidebar').innerHTML = renderProjectSidebar('视频基础质量分级', 'lab', 'mine');
+document.querySelectorAll('.filter').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.remove('rl-tag','rl-tag-blue'));btn.classList.add('rl-tag','rl-tag-blue');}));
+</script>
+</body>
+</html>

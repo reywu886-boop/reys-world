@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RuleLoop · 决策面板</title>
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+.pm-wrap{flex:1;padding:24px 32px;min-width:0}.toolbar{display:flex;align-items:center;gap:10px;margin:18px 0}.draft{background:#fff;border:1px solid var(--rl-border);border-radius:8px;display:flex;overflow:hidden}.draft-mark{width:4px;background:#7C3AED}.draft-body{flex:1;padding:18px}.draft-meta{display:flex;align-items:center;gap:8px;font-size:12px}.draft-grid{display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:18px;margin-top:14px}.case-box,.change-box{border:1px solid var(--rl-border);border-radius:8px;padding:14px;background:#FAFBFC}.mask{height:9px;background:#E5E6EB;border-radius:3px;margin:9px 0}.mask.m{width:84%}.mask.s{width:62%}.actions{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}.studio{position:fixed;inset:0;z-index:90;display:none;background:#F7F8FA}.studio.open{display:flex;flex-direction:column}.studio-head{height:64px;padding:0 22px;background:#fff;border-bottom:1px solid var(--rl-border);display:flex;align-items:center;gap:12px}.studio-body{flex:1;display:grid;grid-template-columns:260px minmax(0,1fr) 300px;min-height:0}.studio-side{padding:18px;background:#fff;border-right:1px solid var(--rl-border);overflow:auto}.doc{padding:22px;overflow:auto}.doc-paper{max-width:780px;margin:auto;background:#fff;border:1px solid var(--rl-border);border-radius:8px;padding:24px;min-height:520px}.decision-side{padding:18px;background:#fff;border-left:1px solid var(--rl-border)}.tabs{display:flex;gap:0;border-bottom:1px solid var(--rl-border);margin-bottom:18px}.tabs button{border:0;background:none;padding:10px 15px;color:var(--rl-text-3);border-bottom:2px solid transparent}.tabs button.active{color:var(--rl-primary);border-color:var(--rl-primary)}.toast{position:fixed;right:24px;bottom:24px;padding:13px 16px;background:#1f2b25;color:#fff;border-radius:7px;font-size:13px;box-shadow:0 12px 30px rgba(0,0,0,.16);opacity:0;transform:translateY(8px);transition:.2s}.toast.show{opacity:1;transform:translateY(0)}@media(max-width:980px){.draft-grid{grid-template-columns:1fr}.studio-body{grid-template-columns:1fr}.studio-side,.decision-side{display:none}}
+</style>
+</head>
+<body>
+<div id="topbar"></div>
+<div style="display:flex">
+  <div id="sidebar"></div>
+  <main class="pm-wrap">
+    <div style="display:flex;align-items:end;justify-content:space-between">
+      <div><div style="font-size:20px;font-weight:600">决策面板</div><div style="margin-top:5px;color:var(--rl-text-3);font-size:13px">审核由答疑看板升级的处理建议，保留 Case、判断依据和发布结果。</div></div>
+      <span class="rl-tag rl-tag-orange">1 条待审</span>
+    </div>
+    <div class="toolbar"><button class="rl-btn rl-btn-primary rl-btn-sm">待我处理</button><button class="rl-btn rl-btn-secondary rl-btn-sm">已通过</button><button class="rl-btn rl-btn-secondary rl-btn-sm">已驳回</button><span style="flex:1"></span><input class="rl-input" placeholder="搜索案例" style="width:220px"></div>
+    <article class="draft">
+      <div class="draft-mark"></div>
+      <div class="draft-body">
+        <div class="draft-meta"><span class="rl-tag" style="background:#F3E8FF;color:#6D28D9">修订原文</span><span>CASE-A017</span><span style="color:var(--rl-text-3)">来自质检答疑</span><span style="margin-left:auto" class="rl-tag rl-tag-blue">待产品决策</span></div>
+        <div class="draft-grid">
+          <div>
+            <div class="case-box"><b>为什么升级</b><p style="margin:8px 0 0;color:var(--rl-text-2);font-size:13px;line-height:1.7">质检确认现有说明无法稳定回答这个问题，需要补充一个边界条件。</p><a href="case-pool.html" style="display:inline-block;margin-top:9px;color:var(--rl-primary);font-size:12px;text-decoration:none">查看 Case 完整轨迹 →</a></div>
+            <div class="change-box" style="margin-top:12px"><div style="display:flex;justify-content:space-between"><b>AI 起草的修改建议</b><span style="font-size:12px;color:var(--rl-text-3)">结构化草稿</span></div><div style="margin-top:14px;font-size:12px;line-height:1.9;color:var(--rl-text-2)"><div><b style="color:var(--rl-text)">适用场景：</b>当前 Case 所属的素材上下文</div><div><b style="color:var(--rl-text)">补充目的：</b>让同类问题可以被稳定答复</div><div><b style="color:var(--rl-text)">回流对象：</b>关联任务与后续作业</div></div></div>
+            <div class="case-box" style="margin-top:12px;border-color:#f1d19b;background:#fffaf1"><b>相似 Case 检查</b><p style="margin:8px 0 0;color:var(--rl-text-2);font-size:12px;line-height:1.7">发现 2 条相关历史 Case：一条可以直接作为答疑依据，一条需要确认是否为新的边界。</p><button class="rl-btn rl-btn-secondary rl-btn-sm" id="showSimilar" style="margin-top:10px">查看相似项</button></div>
+          </div>
+          <aside class="case-box"><b>处理信息</b><div style="margin-top:12px;font-size:12px;line-height:1.9;color:var(--rl-text-2)">修改类型：边界补充<br>提交来源：质检答疑<br>负责人：产品成员<br>当前状态：待审核</div></aside>
+        </div>
+        <div class="actions"><button class="rl-btn rl-btn-secondary" id="reject">退回补充</button><button class="rl-btn rl-btn-secondary" id="openStudio">打开审核工作室</button><button class="rl-btn rl-btn-primary" id="quickApprove">通过并发布</button></div>
+      </div>
+    </article>
+  </main>
+</div>
+
+<section class="studio" id="studio">
+  <header class="studio-head"><strong>CASE-A017 · 规则修改工作室</strong><span class="rl-tag rl-tag-blue">产品成员</span><span style="flex:1"></span><button class="rl-btn rl-btn-secondary" id="closeStudio">关闭</button></header>
+  <div class="studio-body">
+    <aside class="studio-side"><strong>Case 上下文</strong><div class="case-box" style="margin-top:14px;font-size:12px;line-height:1.8">来源：质检答疑<br>原始任务：已关联<br>质检结论：需要补充边界条件<br>处理记录：完整保留</div></aside>
+    <main class="doc">
+      <div class="tabs"><button class="active">合并结果</button><button>原文</button><button>Diff</button></div>
+      <div class="doc-paper"><div style="color:var(--rl-text-3);font-size:12px">结构化审核演示</div><h2 style="font-size:20px">修改工作区</h2><p style="font-size:13px;line-height:1.8;color:var(--rl-text-2)">此处展示产品如何比较、编辑和发布处理建议，不展示具体规则正文。</p><div style="margin-top:24px;padding:16px;border:1px solid #d9e4f5;border-radius:6px;background:#f8fbff"><b style="font-size:13px">变更摘要</b><p style="font-size:12px;line-height:1.8;color:var(--rl-text-2)">新增一个边界澄清项，关联 CASE-A017，并把审核结果同步给相关任务。</p></div><div style="margin-top:14px;padding:16px;background:#FFFBE6;border:1px solid #FFE58F;border-radius:6px"><b style="font-size:13px">影响范围</b><p style="font-size:12px;line-height:1.8;color:var(--rl-text-2)">发布后将通知 3 个关联任务；当前 Case 的完整处理轨迹会被保留。</p></div></div>
+    </main>
+    <aside class="decision-side"><strong>产品决策</strong><p style="font-size:12px;line-height:1.7;color:var(--rl-text-2)">确认修改类型、目标位置和合并结果后发布。</p><button class="rl-btn rl-btn-secondary" style="width:100%;justify-content:center;margin-top:12px">退回补充信息</button><button class="rl-btn rl-btn-secondary" style="width:100%;justify-content:center;margin-top:10px">编辑修改建议</button><button class="rl-btn rl-btn-primary" id="publish" style="width:100%;justify-content:center;margin-top:10px">通过并发布</button></aside>
+  </div>
+</section>
+<div class="toast" id="toast"></div>
+<script src="assets/common.js"></script>
+<script>
+localStorage.setItem('rl_role','pm_member');
+document.getElementById('topbar').innerHTML=renderTopbar([{label:'项目库',href:'projects.html'},{label:'视频基础质量分级',href:'project-overview.html'},{label:'决策面板'}]);
+document.getElementById('sidebar').innerHTML=renderProjectSidebar('视频基础质量分级','pm','decisions');
+const studio=document.getElementById('studio');
+document.getElementById('openStudio').onclick=()=>studio.classList.add('open');
+document.getElementById('closeStudio').onclick=()=>studio.classList.remove('open');
+const toast=document.getElementById('toast');
+const notify=(text)=>{toast.textContent=text;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2200)};
+document.getElementById('quickApprove').onclick=()=>{notify('已通过。处理结果将回流到关联作业。');setTimeout(()=>location.href='board-today.html?result=published',700)};
+document.getElementById('publish').onclick=()=>{notify('已发布。相关任务正在收到更新。');setTimeout(()=>location.href='board-today.html?result=published',700)};
+document.getElementById('reject').onclick=()=>notify('已退回给质检员补充案例上下文。');
+document.getElementById('showSimilar').onclick=()=>notify('已展开相似 Case 对比，可在案例池继续查看。');
+document.querySelectorAll('.tabs button').forEach(btn=>btn.onclick=()=>{document.querySelectorAll('.tabs button').forEach(x=>x.classList.remove('active'));btn.classList.add('active')});
+</script>
+</body></html>

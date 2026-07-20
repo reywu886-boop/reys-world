@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>RuleLoop · 登录</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body style="background:linear-gradient(135deg,#1E5EFF 0%,#5B8DFF 100%);min-height:100vh;">
+<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;">
+  <div style="display:flex;width:880px;min-height:560px;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,0.18);">
+    <!-- 左侧品牌区 -->
+    <div style="flex:1;background:linear-gradient(135deg,#1E5EFF 0%,#3470FF 100%);padding:48px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;">
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;font-size:22px;font-weight:600;">
+          <div style="width:40px;height:40px;background:#fff;color:#1E5EFF;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;">RL</div>RuleLoop
+        </div>
+        <div style="margin-top:8px;font-size:13px;opacity:0.85;">规则制定 · 标注下发 · 持续迭代</div>
+      </div>
+      <div>
+        <div style="font-size:26px;font-weight:600;line-height:1.5;">让每一条 case<br/>都成为规则的进化燃料</div>
+        <div style="margin-top:16px;font-size:13px;opacity:0.85;line-height:1.7;">质检侧上传疑难 case → AI 起草细则 → 产品决策 → 自动合并到文档 → 每日产出更新日报
+        </div>
+      </div>
+      <div style="font-size:12px;opacity:0.6;">© 2026 RuleLoop · MVP v0.1</div>
+    </div>
+    <!-- 右侧登录 -->
+    <div style="flex:1;padding:48px;display:flex;flex-direction:column;justify-content:center;">
+      <div style="font-size:22px;font-weight:600;color:var(--rl-text);">欢迎回来</div>
+      <div style="font-size:13px;color:var(--rl-text-3);margin-top:6px;">使用账号密码登录，角色由后端绑定</div>
+
+      <div style="margin-top:28px;">
+        <label style="font-size:13px;color:var(--rl-text-2);">账号</label>
+        <input id="email-input" class="rl-input" style="margin-top:6px;" value="reymind@tencent.com" />
+      </div>
+      <div style="margin-top:14px;">
+        <label style="font-size:13px;color:var(--rl-text-2);">密码</label>
+        <input class="rl-input" style="margin-top:6px;" type="password" value="••••••••" />
+      </div>
+      <div style="margin-top:12px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--rl-text-3);">
+        <label><input type="checkbox" checked />记住登录状态</label>
+        <a href="#" style="color:var(--rl-primary);">忘记密码?</a>
+      </div>
+      <a href="javascript:void(0)" onclick="loginAs(detectRoleByEmail())" class="rl-btn rl-btn-primary" style="margin-top:22px;justify-content:center;padding:11px 0;font-size:15px;">登录</a>
+
+      <!-- MVP demo 快捷登录 -->
+      <div style="margin-top:24px;padding-top:18px;border-top:1px dashed var(--rl-border);">
+        <div style="font-size:11px;color:var(--rl-text-3);margin-bottom:10px;text-align:center;">— MVP demo · 按角色快速登录 —</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
+          <a href="javascript:void(0)" onclick="loginAs('annotator')" class="role-btn" style="background:#F2F3F5;border:1px solid #E5E6EB;color:#86909C;">
+            <div style="font-size:18px;"></div>
+            <div style="font-size:12px;font-weight:500;margin-top:2px;">标注员</div>
+          </a>
+          <a href="javascript:void(0)" onclick="loginAs('qc')" class="role-btn" style="background:#FFF7E6;border:1px solid #FFD591;color:#D46B08;">
+            <div style="font-size:18px;"></div>
+            <div style="font-size:12px;font-weight:500;margin-top:2px;">质检员</div>
+          </a>
+          <a href="javascript:void(0)" onclick="loginAs('pm_member')" class="role-btn" style="background:#F3E8FF;border:1px solid #D9B3FF;color:#7C3AED;">
+            <div style="font-size:18px;"></div>
+            <div style="font-size:12px;font-weight:500;margin-top:2px;">产品成员</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.role-btn {
+  text-align:center;
+  padding:10px 8px;
+  border-radius:8px;
+  text-decoration:none;
+  transition:transform .15s, box-shadow .15s;
+  display:block;
+}
+.role-btn:hover {
+  transform:translateY(-1px);
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+</style>
+
+<script>function loginAs(role) {
+  localStorage.setItem('rl_role', role);
+  // 按角色跳到首页（首页会按角色显示不同入口）
+  location.href = 'home.html';
+}
+// 根据邮箱前缀猜测角色（demo 用，真实环境后端返回）
+function detectRoleByEmail() {
+  const e = (document.getElementById('email-input').value || '').toLowerCase();
+  if (e.includes('annot')) return 'annotator';
+  if (e.includes('qc') || e.includes('check')) return 'qc';
+  return 'pm_member';
+}
+</script>
+</body>
+</html>
+

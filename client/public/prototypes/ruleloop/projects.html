@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>RuleLoop · 项目库</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div id="topbar"></div>
+<div style="display:flex;">
+  <div id="sidebar"></div>
+  <div style="flex:1;padding:24px 32px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+      <div>
+        <div style="font-size:20px;font-weight:600;">项目库</div>
+        <div style="font-size:13px;color:var(--rl-text-3);margin-top:4px;">每个项目对应一套标准文档体系，可独立配置规则与成员</div>
+      </div>
+      <div style="display:flex;gap:12px;">
+        <div style="position:relative;">
+          <input class="rl-input" placeholder="搜索项目名…" style="width:240px;padding-left:32px;" />
+          <span style="position:absolute;left:10px;top:9px;width:14px;height:14px;color:var(--rl-text-3);"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></span>
+        </div>
+        <a href="project-new.html" class="rl-btn rl-btn-primary">
+          <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>新建项目
+        </a>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;">
+      <!-- 项目卡片 -->
+      <a href="project-overview.html" class="rl-card rl-card-hover" style="text-decoration:none;color:inherit;">
+        <div style="display:flex;align-items:flex-start;gap:12px;">
+          <div style="width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,#1E5EFF,#5B8DFF);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:18px;">视</div>
+          <div style="flex:1;min-width:0;">
+            <div style="font-size:15px;font-weight:600;">视频基础质量分级</div>
+            <div style="font-size:12px;color:var(--rl-text-3);margin-top:2px;">5 维度 · 5 份 SOP <span class="rl-tag rl-tag-blue" style="font-size:10px;padding:0 6px;margin-left:4px;">产品成员</span></div>
+          </div>
+          <span class="rl-tag rl-tag-orange">12 待审</span>
+        </div>
+        <div style="margin-top:14px;font-size:12px;color:var(--rl-text-3);line-height:1.7;">覆盖动态质量、内容质量、清晰度、动态强度、美学 5 个评分维度的标注规则集。
+        </div>
+        <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--rl-border);display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--rl-text-3);">
+          <div style="display:flex;gap:14px;">
+            <span> 213 case</span>
+            <span> 8 成员</span>
+          </div>
+          <span>v2.1 · 2 天前</span>
+        </div>
+      </a>
+
+      <a href="project-overview.html" class="rl-card rl-card-hover" style="text-decoration:none;color:inherit;">
+        <div style="display:flex;align-items:flex-start;gap:12px;">
+          <div style="width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,#00B42A,#33D14C);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:18px;">字</div>
+          <div style="flex:1;min-width:0;">
+            <div style="font-size:15px;font-weight:600;">视频 Caption 定义与交付</div>
+            <div style="font-size:12px;color:var(--rl-text-3);margin-top:2px;">caption · 2 份 SOP <span class="rl-tag rl-tag-gray" style="font-size:10px;padding:0 6px;margin-left:4px;">产品</span></div>
+          </div>
+          <span class="rl-tag rl-tag-orange">5 待审</span>
+        </div>
+        <div style="margin-top:14px;font-size:12px;color:var(--rl-text-3);line-height:1.7;">视频字幕生成与人工审核的标准定义，含字段规范、内容审核、风格统一三个子规则集。
+        </div>
+        <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--rl-border);display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--rl-text-3);">
+          <div style="display:flex;gap:14px;">
+            <span> 64 case</span>
+            <span> 5 成员</span>
+          </div>
+          <span>v1.3 · 1 天前</span>
+        </div>
+      </a>
+
+      <a href="project-overview.html" class="rl-card rl-card-hover" style="text-decoration:none;color:inherit;">
+        <div style="display:flex;align-items:flex-start;gap:12px;">
+          <div style="width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,#FF7D00,#FFB84D);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:18px;">镜</div>
+          <div style="flex:1;min-width:0;">
+            <div style="font-size:15px;font-weight:600;">多镜头规划标注</div>
+            <div style="font-size:12px;color:var(--rl-text-3);margin-top:2px;">镜头分镜 · 1 份 SOP <span class="rl-tag rl-tag-gray" style="font-size:10px;padding:0 6px;margin-left:4px;">质检员</span></div>
+          </div>
+          <span class="rl-tag rl-tag-gray">无待审</span>
+        </div>
+        <div style="margin-top:14px;font-size:12px;color:var(--rl-text-3);line-height:1.7;">长视频剪辑中多镜头分镜规划标注规范。
+        </div>
+        <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--rl-border);display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--rl-text-3);">
+          <div style="display:flex;gap:14px;">
+            <span> 12 case</span>
+            <span> 3 成员</span>
+          </div>
+          <span>v0.5 · 5 天前</span>
+        </div>
+      </a>
+
+      <!-- 新建项目占位卡 -->
+      <a href="project-new.html" class="rl-card rl-card-hover" style="text-decoration:none;color:var(--rl-text-3);border:1px dashed var(--rl-border);display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:170px;">
+        <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+        <div style="margin-top:8px;font-size:14px;">新建项目</div>
+      </a>
+    </div>
+  </div>
+</div>
+<script src="assets/common.js"></script>
+<script>document.getElementById('topbar').innerHTML = renderTopbar([
+    {label:'项目库'}
+  ]);
+  document.getElementById('sidebar').innerHTML = renderGlobalSidebar('projects');
+</script>
+</body>
+</html>
+

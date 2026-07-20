@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>RuleLoop · 首页</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div id="topbar"></div>
+<div style="background:linear-gradient(180deg,#EEF3FF 0%,#F7F8FA 60%);min-height:calc(100vh - 56px);padding:48px 0;">
+  <div style="max-width:880px;margin:0 auto;padding:0 24px;">
+
+    <!-- 欢迎区（根据角色变化）-->
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:28px;">
+      <div>
+        <div style="font-size:24px;font-weight:600;color:var(--rl-text);" id="greeting">早上好，Reymind</div>
+        <div style="font-size:13px;color:var(--rl-text-3);margin-top:6px;" id="subtitle">选择一个项目继续工作</div>
+      </div>
+      <a href="project-new.html" id="new-project-btn" class="rl-btn rl-btn-primary" style="display:none;">+ 新建项目</a>
+    </div>
+
+    <!-- 项目列表 -->
+    <div class="rl-card" style="padding:8px;">
+      <a href="project-overview.html" class="project-row">
+        <div style="width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,#1E5EFF,#5B8DFF);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;flex-shrink:0;">视</div>
+        <div style="flex:1;min-width:0;">
+          <div style="font-size:15px;font-weight:500;color:var(--rl-text);">视频基础质量分级</div>
+          <div style="font-size:12px;color:var(--rl-text-3);margin-top:2px;">5 份 SOP · 今日新增 12 条草稿待审 · 最近活跃 2 分钟前</div>
+        </div>
+        <span class="badge-pm rl-tag rl-tag-orange">12 待审</span>
+        <span class="badge-qc rl-tag rl-tag-blue">3 条已通过</span>
+        <span class="badge-annotator rl-tag rl-tag-blue">今日 3 项更新</span>
+      </a>
+
+      <a href="project-overview.html" class="project-row">
+        <div style="width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,#00B42A,#33D14C);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;flex-shrink:0;">字</div>
+        <div style="flex:1;min-width:0;">
+          <div style="font-size:15px;font-weight:500;color:var(--rl-text);">视频 Caption 定义与交付</div>
+          <div style="font-size:12px;color:var(--rl-text-3);margin-top:2px;">2 份 SOP · 今日新增 5 条草稿待审 · 最近活跃 1 小时前</div>
+        </div>
+        <span class="badge-pm rl-tag rl-tag-orange">5 待审</span>
+        <span class="badge-qc rl-tag rl-tag-blue">2 条已通过</span>
+        <span class="badge-annotator rl-tag rl-tag-blue">今日 2 项更新</span>
+      </a>
+
+      <a href="project-overview.html" class="project-row">
+        <div style="width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,#FF7D00,#FFB84D);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;flex-shrink:0;">镜</div>
+        <div style="flex:1;min-width:0;">
+          <div style="font-size:15px;font-weight:500;color:var(--rl-text);">多镜头规划标注</div>
+          <div style="font-size:12px;color:var(--rl-text-3);margin-top:2px;">1 份 SOP · 暂无待审 · 最近活跃 昨天</div>
+        </div>
+        <span class="rl-tag rl-tag-gray">—</span>
+      </a>
+    </div>
+
+    <!-- 角色提示 -->
+    <div id="role-hint" style="margin-top:24px;padding:14px 18px;background:#fff;border-radius:8px;border:1px dashed var(--rl-border);font-size:13px;color:var(--rl-text-3);line-height:1.7;"></div>
+  </div>
+</div>
+
+<style>
+.project-row {
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:14px 16px;
+  border-radius:8px;
+  text-decoration:none;
+  color:inherit;
+  transition:background .15s;
+}
+.project-row:hover {
+  background:#FAFBFC;
+}
+</style>
+
+<script src="assets/common.js"></script>
+<script>document.getElementById('topbar').innerHTML = renderTopbar();
+
+const role = getCurrentRole();
+
+// 1) 根据角色显示不同欢迎语和功能
+const map = {
+  annotator: {
+    greet: '欢迎，',
+    subtitle: '选择项目查看今天的规则更新',
+    showNewProject: false,
+    showBadges: ['annotator'],
+    hint: '你是<strong>标注员</strong>，进入项目后可以查看每日规则更新和完整规则文档（只读）',
+  },
+  qc: {
+    greet: '欢迎，',
+    subtitle: '选择项目继续提交案例 / 查看进度',
+    showNewProject: false,
+    showBadges: ['qc'],
+    hint: '你是<strong>质检员</strong>，进入项目后可以提交疑难 case、查看自己的提交进度，以及浏览看板',
+  },
+  pm_member: {
+    greet: '早上好，',
+    subtitle: '今天有 17 条草稿待审 · 选择项目开始决策',
+    showNewProject: true,
+    showBadges: ['pm'],
+    hint: '你是<strong>产品成员</strong>，可访问全部模块。点击右上角「+ 新建项目」可创建新的规则项目',
+  },
+};
+const cfg = map[role];
+
+document.getElementById('greeting').textContent = cfg.greet + 'Reymind';
+document.getElementById('subtitle').textContent = cfg.subtitle;
+if (cfg.showNewProject) {
+  document.getElementById('new-project-btn').style.display = 'inline-flex';
+}
+document.getElementById('role-hint').innerHTML = cfg.hint;
+
+// 只显示对应角色的徽章
+document.querySelectorAll('[class*="badge-"]').forEach(el => {
+  const matched = cfg.showBadges.some(b =>el.classList.contains('badge-' + b));
+  if (!matched) el.style.display = 'none';
+});
+</script>
+</body>
+</html>
+

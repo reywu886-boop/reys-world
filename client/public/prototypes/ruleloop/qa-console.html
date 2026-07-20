@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RuleLoop · 质检答疑</title>
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+.qa-wrap{height:calc(100vh - 56px);display:flex;min-width:0}.qa-main{flex:1;display:grid;grid-template-columns:300px minmax(420px,1fr) 330px;min-width:0}.inbox{background:#fff;border-right:1px solid var(--rl-border);overflow:auto}.inbox-head{padding:18px;border-bottom:1px solid var(--rl-border)}.thread-row{padding:14px 16px;border-bottom:1px solid var(--rl-border);cursor:pointer}.thread-row.active{background:var(--rl-primary-bg);border-left:3px solid var(--rl-primary)}.chat{display:flex;flex-direction:column;min-width:0;background:#F7F8FA}.chat-head{height:64px;padding:0 20px;background:#fff;border-bottom:1px solid var(--rl-border);display:flex;align-items:center}.messages{flex:1;padding:20px;overflow:auto}.bubble{max-width:78%;padding:12px 14px;border:1px solid var(--rl-border);border-radius:8px;background:#fff;font-size:13px;line-height:1.7}.bubble.reply{margin:16px 0 0 auto;background:var(--rl-primary-bg);border-color:#C8D5FF}.composer{padding:14px 18px;background:#fff;border-top:1px solid var(--rl-border)}.case-side{background:#fff;border-left:1px solid var(--rl-border);padding:18px;overflow:auto}.context{border:1px solid var(--rl-border);border-radius:8px;padding:14px;background:#FAFBFC;font-size:12px;line-height:1.8}.decision{margin-top:16px;border-top:1px solid var(--rl-border);padding-top:16px}.decision button{width:100%;justify-content:center;margin-top:10px}@media(max-width:1050px){.qa-main{grid-template-columns:240px 1fr}.case-side{grid-column:1/-1;border-left:0;border-top:1px solid var(--rl-border)}}@media(max-width:760px){.qa-main{grid-template-columns:1fr}.inbox{display:none}}
+</style>
+</head>
+<body>
+<div id="topbar"></div>
+<div class="qa-wrap">
+  <div id="sidebar"></div>
+  <main class="qa-main">
+    <aside class="inbox">
+      <div class="inbox-head"><strong>待我答疑</strong><div style="margin-top:10px"><input class="rl-input" placeholder="搜索案例"></div></div>
+      <div class="thread-row active"><span class="rl-tag rl-tag-orange">待答疑</span><b style="display:block;margin-top:8px">CASE-A017</b><p style="margin:6px 0 0;color:var(--rl-text-2);font-size:12px;line-height:1.5">当前说明无法覆盖这个 case</p></div>
+      <div class="thread-row"><span class="rl-tag rl-tag-blue">答疑中</span><b style="display:block;margin-top:8px">CASE-A021</b><p style="margin:6px 0 0;color:var(--rl-text-2);font-size:12px">等待补充信息</p></div>
+    </aside>
+    <section class="chat">
+      <header class="chat-head"><div><strong>CASE-A017</strong><div style="margin-top:4px;color:var(--rl-text-3);font-size:12px">规则疑问 · 来自标注工作台</div></div><span style="flex:1"></span><span class="rl-tag rl-tag-orange">待答疑</span></header>
+      <div class="messages">
+        <div class="bubble"><b style="display:block;margin-bottom:5px">标注员</b>这个 case 在当前说明下无法确定，应该如何处理？</div>
+        <div class="bubble reply"><b style="display:block;margin-bottom:5px;color:var(--rl-primary)">质检员</b>我会先确认现有说明能否回答；如果不能，再升级给产品成员。</div>
+      </div>
+      <div class="composer"><textarea class="rl-textarea" style="min-height:86px" placeholder="输入给标注员的答复"></textarea><div style="display:flex;justify-content:flex-end;margin-top:10px"><button class="rl-btn rl-btn-primary" id="sendReply">发送答复</button></div></div>
+    </section>
+    <aside class="case-side">
+      <strong>问题上下文</strong>
+      <div class="context" style="margin-top:12px"><div>来源：标注工作台</div><div>任务：示例任务 017</div><div>素材：已关联</div><div>标注结果：已关联</div></div>
+      <div style="margin-top:18px"><strong style="font-size:13px">当前处理</strong><p style="font-size:12px;line-height:1.7;color:var(--rl-text-2)">质检员先判断这是已有说明可以回答的问题，还是确实需要进入规则迭代。</p></div>
+      <div class="decision">
+        <button class="rl-btn rl-btn-secondary" id="closeCase">答复并关闭</button>
+        <button class="rl-btn rl-btn-primary" id="promoteCase">升级给产品成员</button>
+      </div>
+    </aside>
+  </main>
+</div>
+<script src="assets/common.js"></script>
+<script>
+localStorage.setItem('rl_role','qc');
+document.getElementById('topbar').innerHTML=renderTopbar([{label:'案例池',href:'case-pool.html'},{label:'质检答疑'}]);
+document.getElementById('sidebar').innerHTML=renderLabelDemoSidebar('qc','qa');
+document.getElementById('closeCase').onclick=()=>location.href='board-today.html?result=answered';
+document.getElementById('promoteCase').onclick=()=>location.href='pm-decisions.html?case=A017';
+document.getElementById('sendReply').onclick=()=>document.getElementById('closeCase').focus();
+</script>
+</body></html>

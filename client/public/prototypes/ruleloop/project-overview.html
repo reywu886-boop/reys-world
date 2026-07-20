@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>RuleLoop · 项目概览</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div id="topbar"></div>
+<div style="display:flex;">
+  <div id="sidebar"></div>
+  <div style="flex:1;padding:24px 32px;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:24px;">
+      <div>
+        <div style="font-size:20px;font-weight:600;">视频基础质量分级</div>
+        <div style="font-size:13px;color:var(--rl-text-3);margin-top:4px;">覆盖动态质量、内容质量、清晰度、动态强度、美学 5 维度 · 当前版本 v2.1</div>
+      </div>
+      <div style="display:flex;gap:10px;">
+        <a href="board-today.html" class="rl-btn rl-btn-secondary">看板</a>
+        <a href="lab-upload.html" class="rl-btn rl-btn-secondary">提交案例</a>
+        <a href="pm-decisions.html" class="rl-btn rl-btn-primary">决策面板（12 待审）</a>
+      </div>
+    </div>
+
+    <!-- 数据卡 -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px;">
+      <div class="rl-card" style="padding:18px;">
+        <div style="font-size:12px;color:var(--rl-text-3);">挂载文档</div>
+        <div style="font-size:24px;font-weight:600;margin-top:6px;">5 <span style="font-size:13px;color:var(--rl-text-3);font-weight:400;">份</span></div>
+      </div>
+      <div class="rl-card" style="padding:18px;">
+        <div style="font-size:12px;color:var(--rl-text-3);">累计 Case</div>
+        <div style="font-size:24px;font-weight:600;margin-top:6px;">213 <span style="font-size:13px;color:var(--rl-success);">↑ 12 今日</span></div>
+      </div>
+      <div class="rl-card" style="padding:18px;">
+        <div style="font-size:12px;color:var(--rl-text-3);">通过细则</div>
+        <div style="font-size:24px;font-weight:600;color:var(--rl-success);margin-top:6px;">147</div>
+      </div>
+      <div class="rl-card" style="padding:18px;">
+        <div style="font-size:12px;color:var(--rl-text-3);">待审草稿</div>
+        <div style="font-size:24px;font-weight:600;color:var(--rl-warning);margin-top:6px;">12</div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:24px;">
+      <!-- 文档列表 -->
+      <div class="rl-card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+          <div style="font-size:15px;font-weight:600;">本项目规则文档</div>
+          <a href="pm-docs.html" style="font-size:13px;color:var(--rl-primary);text-decoration:none;">管理 →</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <a href="pm-doc-edit.html" style="display:flex;align-items:center;gap:12px;padding:12px;border-radius:8px;text-decoration:none;color:inherit;border:1px solid var(--rl-border);">
+            <span style="font-size:20px;"></span>
+            <div style="flex:1;">
+              <div style="font-size:14px;font-weight:500;">视频基础质量-动态质量-人工审核 SOP</div>
+              <div style="font-size:12px;color:var(--rl-text-3);margin-top:2px;">v2.0 · 今日新增草稿 4 条</div>
+            </div>
+            <span class="rl-tag rl-tag-orange">4</span>
+          </a>
+          <a href="pm-doc-edit.html" style="display:flex;align-items:center;gap:12px;padding:12px;border-radius:8px;text-decoration:none;color:inherit;border:1px solid var(--rl-border);">
+            <span style="font-size:20px;"></span>
+            <div style="flex:1;">
+              <div style="font-size:14px;font-weight:500;">视频基础质量-内容质量-人工审核 SOP</div>
+              <div style="font-size:12px;color:var(--rl-text-3);margin-top:2px;">v1.3 · 今日新增草稿 3 条</div>
+            </div>
+            <span class="rl-tag rl-tag-orange">3</span>
+          </a>
+          <a href="pm-doc-edit.html" style="display:flex;align-items:center;gap:12px;padding:12px;border-radius:8px;text-decoration:none;color:inherit;border:1px solid var(--rl-border);">
+            <span style="font-size:20px;"></span>
+            <div style="flex:1;">
+              <div style="font-size:14px;font-weight:500;">视频基础质量-清晰度-人工审核标注 SOP</div>
+              <div style="font-size:12px;color:var(--rl-text-3);margin-top:2px;">v1.1 · 今日新增草稿 2 条</div>
+            </div>
+            <span class="rl-tag rl-tag-orange">2</span>
+          </a>
+          <a href="pm-doc-edit.html" style="display:flex;align-items:center;gap:12px;padding:12px;border-radius:8px;text-decoration:none;color:inherit;border:1px solid var(--rl-border);">
+            <span style="font-size:20px;"></span>
+            <div style="flex:1;">
+              <div style="font-size:14px;font-weight:500;">视频基础质量-动态强度-人工审核标注 SOP</div>
+              <div style="font-size:12px;color:var(--rl-text-3);margin-top:2px;">v1.1 · 今日新增草稿 1 条</div>
+            </div>
+            <span class="rl-tag rl-tag-orange">1</span>
+          </a>
+          <a href="pm-doc-edit.html" style="display:flex;align-items:center;gap:12px;padding:12px;border-radius:8px;text-decoration:none;color:inherit;border:1px solid var(--rl-border);">
+            <span style="font-size:20px;"></span>
+            <div style="flex:1;">
+              <div style="font-size:14px;font-weight:500;">视频基础质量-美学-人工审核标注 SOP</div>
+              <div style="font-size:12px;color:var(--rl-text-3);margin-top:2px;">v2.0 · 今日新增草稿 2 条</div>
+            </div>
+            <span class="rl-tag rl-tag-orange">2</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 最近活动 -->
+      <div class="rl-card">
+        <div style="font-size:15px;font-weight:600;margin-bottom:16px;">最近活动</div>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div style="display:flex;gap:10px;font-size:13px;">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--rl-warning);margin-top:7px;flex-shrink:0;"></span>
+            <div>
+              <div>张三 上传了 <strong>3 条 case</strong></div>
+              <div style="font-size:12px;color:var(--rl-text-3);margin-top:2px;">10:45 · 美学 SOP</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;font-size:13px;">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--rl-success);margin-top:7px;flex-shrink:0;"></span>
+            <div>
+              <div>Reymind 通过了 <strong>2 条草稿</strong> → 已合并到动态质量 SOP</div>
+              <div style="font-size:12px;color:var(--rl-text-3);margin-top:2px;">10:12 · 动态质量 SOP</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;font-size:13px;">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--rl-primary);margin-top:7px;flex-shrink:0;"></span>
+            <div>
+              <div>李四 批量上传了 <strong>excel（8 条 case）</strong></div>
+              <div style="font-size:12px;color:var(--rl-text-3);margin-top:2px;">09:30 · AI 已解析 7 条 / 待人工补全 1 条</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;font-size:13px;">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--rl-text-3);margin-top:7px;flex-shrink:0;"></span>
+            <div>
+              <div>系统自动生成了 <strong>5 月 25 日日报</strong></div>
+              <div style="font-size:12px;color:var(--rl-text-3);margin-top:2px;">昨日 21:00</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="assets/common.js"></script>
+<script>document.getElementById('topbar').innerHTML = renderTopbar([
+    {label:'项目库',href:'projects.html'},
+    {label:'视频基础质量分级'}
+  ]);
+  document.getElementById('sidebar').innerHTML = renderProjectSidebar('视频基础质量分级', 'pm', 'overview');
+</script>
+</body>
+</html>
+
