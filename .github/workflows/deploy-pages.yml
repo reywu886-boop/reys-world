@@ -36,8 +36,20 @@ jobs:
         run: pnpm build
         env:
           GITHUB_ACTIONS: "true"
-      - name: Add single-page app fallback
-        run: cp dist/public/index.html dist/public/404.html
+      - name: Add project route entry points
+        run: |
+          for route in \
+            projects/ai-storyboard \
+            projects/ai-previz \
+            projects/model-data-strategy \
+            projects/data-production-products \
+            projects/ruleloop \
+            projects/caption-four-roles
+          do
+            mkdir -p "dist/public/$route"
+            cp dist/public/index.html "dist/public/$route/index.html"
+          done
+          cp dist/public/index.html dist/public/404.html
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
