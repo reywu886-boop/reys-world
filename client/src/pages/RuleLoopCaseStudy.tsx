@@ -6,31 +6,31 @@ import RuleLoopDiagrams from '@/components/RuleLoopDiagrams';
 const COPY = {
   heroLabel: 'AI PRODUCT / RULELOOP',
   heroTitle: 'RuleLoop',
-  heroKicker: '标注答疑与规则迭代平台',
-  heroIntro: '面向视频生成模型数据生产，把标注现场的疑问、质检判断、案例沉淀与规则迭代留在同一条 Case 链路中。',
+  heroKicker: '每个问题都要有去向，但不是每个问题都要变成规则',
+  heroIntro: '把疑难 Case、原始证据、质检答复与规则版本放回同一条链路：已有规则能够解释时直接答疑，只有真正暴露规则缺口的问题才升级给产品成员。',
   responsibilityLabel: '\u6211\u8d1f\u8d23\u7684\u90e8\u5206',
-  responsibility: '\u4ea7\u54c1\u673a\u5236\u4e0e\u539f\u578b\u8bbe\u8ba1',
+  responsibility: '\u95ee\u9898\u53d1\u73b0\u3001\u4ea7\u54c1\u6d41\u7a0b\u4e0e\u53ef\u8fd0\u884c\u539f\u578b\u8bbe\u8ba1',
   statusLabel: '\u5f53\u524d\u72b6\u6001',
   status: '\u53ef\u8fd0\u884c\u539f\u578b\uff0c\u9700\u6c42\u5df2\u63d0\u4ea4',
-  viewerTitle: '跟着一个 Case，看清三类角色如何协作。',
-  viewerIntro: '标注员在作业现场提问，Case 进入案例池，质检员答疑或升级，产品成员审核是否形成规则更新。',
+  viewerTitle: '跟着一个 Case，看清它如何变成规则',
+  viewerIntro: '标注员提交带有任务上下文的问题，Case 进入案例池。质检员完成答疑或升级，产品成员据此决定是否修改规则。',
   openPrototype: '新窗口打开完整 Demo',
-  resultTitle: '\u539f\u578b\u6700\u7ec8\u8f6c\u6210\u4e86\u4ec0\u4e48\u9700\u6c42\uff1f',
-  resultCopy: '标注侧原地提问、案例池统一沉淀、质检答疑与分流、产品侧审核规则更新，以及结果回到下一轮作业。这些机制已经通过可运行原型验证，并转化为平台需求。',
+  resultTitle: '\u539f\u578b\u6700\u7ec8\u8f6c\u6210\u4e86\u4ec0\u4e48\u9700\u6c42',
+  resultCopy: '原型覆盖标注员提问、案例池记录、质检答疑与分流、产品审核规则修改，以及规则回到下一轮作业的全过程。验证后，这些功能被整理为平台需求；当前证据属于产品原型与需求验证，不等同于已经上线的业务指标。',
 };
 
 const VIEWS = [
-  { src: '/prototypes/ruleloop/annotator-task.html', role: '标注侧', title: '标注工作台', copy: '在当前任务中直接带着 Case 和疑问向上提交。' },
-  { src: '/prototypes/ruleloop/case-pool.html', role: '全员共用', title: '案例池', copy: '统一保存问题来源、当前负责人和处理轨迹。' },
-  { src: '/prototypes/ruleloop/qa-console.html', role: '质检侧', title: '答疑看板', copy: '先答疑，再判断是直接关闭还是升级给产品成员。' },
-  { src: '/prototypes/ruleloop/pm-decisions.html', role: '产品侧', title: '决策面板', copy: '查看 Case 和质检结论，审核修改类型、目标位置和合并结果。' },
+  { src: '/prototypes/ruleloop/annotator-task.html', role: '标注员', title: '标注工作台', copy: '在当前任务里提交问题，并保留对应的任务和标注结果。' },
+  { src: '/prototypes/ruleloop/case-pool.html', role: '全员共用', title: '案例池', copy: '集中查看每个问题的来源、负责人、处理状态和历史记录。' },
+  { src: '/prototypes/ruleloop/qa-console.html', role: '质检员', title: '质检答疑', copy: '处理已有规则能够回答的问题，并将需要改规则的 Case 升级。' },
+  { src: '/prototypes/ruleloop/pm-decisions.html', role: '产品成员', title: '规则决策', copy: '根据 Case 和质检结论，确认是否修改规则以及修改到哪里。' },
 ];
 
 export default function RuleLoopCaseStudy() {
   const [active, setActive] = useState(0);
   const view = VIEWS[active];
   return <div className="min-h-[100dvh] bg-[#eef1ed] text-[#111817]">
-    <CaseStudyNav />
+    <CaseStudyNav fixedLanguage="cn" />
     <main className="pt-14">
       <section className="mx-auto max-w-[1440px] px-6 py-16 md:px-12 md:py-24 xl:px-16">
         <div className="grid gap-12 xl:grid-cols-[minmax(0,1fr)_360px] xl:items-end">
@@ -67,6 +67,13 @@ export default function RuleLoopCaseStudy() {
       </section>
 
       <RuleLoopDiagrams />
+
+      <section className="border-y border-[#cbd2cd] bg-[#111b16] py-16 text-white md:py-20">
+        <div className="mx-auto grid max-w-[1440px] gap-10 px-6 md:px-12 xl:grid-cols-[0.72fr_1.28fr] xl:px-16">
+          <div className="max-w-xl"><p className="font-mono-custom text-[9px] tracking-[0.16em] text-[#d6c07f]">AI / HUMAN BOUNDARY</p><h2 className="mt-4 font-heading text-3xl font-700 leading-[1.06] tracking-tight md:text-5xl">AI 负责整理与起草，人负责规则判断</h2><p className="mt-5 text-base leading-8 text-white/64">RuleLoop 不是让模型自动改 SOP，而是让 AI 降低检索、归档和起草成本，同时把是否升级、是否发布与影响范围保留给质检和产品成员。</p></div>
+          <div className="grid gap-px bg-white/16 sm:grid-cols-2"><Boundary title="系统 / AI" items={['自动关联任务上下文', '检索相似 Case 与已有规则', '整理证据并起草修改建议', '同步处理状态与发布结果']} /><Boundary title="质检 / 产品成员" items={['判断已有规则能否回答', '确认是否构成规则缺口', '审核修改位置与影响范围', '决定发布、退回或驳回']} /></div>
+        </div>
+      </section>
 
       <section className="border-b border-[#cbd2cd] bg-[#e6ebe6] py-16 md:py-24">
         <div className="mx-auto max-w-[1440px] px-6 md:px-12 xl:px-16">
@@ -106,7 +113,24 @@ export default function RuleLoopCaseStudy() {
           <p className="mt-6 max-w-[68ch] text-base leading-relaxed text-[#53615c]">{COPY.resultCopy}</p>
         </div>
       </section>
+
+      <section className="border-t border-[#cbd2cd] bg-[#e6ebe6] py-12 md:py-16">
+        <div className="mx-auto flex max-w-[1440px] flex-col gap-6 px-6 md:flex-row md:items-end md:justify-between md:px-12 xl:px-16">
+          <div>
+            <p className="font-mono-custom text-[9px] tracking-[0.15em] text-[#68756f]">DATA PRODUCTION PROTOTYPES</p>
+            <h2 className="mt-3 font-heading text-2xl font-700 tracking-tight md:text-3xl">同组案例</h2>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <a href="/projects/caption-four-roles" className="border border-[#17201d] px-4 py-3 text-sm font-700 text-[#17201d] transition-colors hover:bg-[#17201d] hover:text-white">查看 Caption 四岗位拆分 →</a>
+            <a href="/projects/data-production-products" className="border border-[#8f9d94] px-4 py-3 text-sm font-700 text-[#34413b] transition-colors hover:bg-white">查看产品原型总览</a>
+          </div>
+        </div>
+      </section>
     </main>
-    <Footer />
+    <Footer fixedLanguage="cn" />
   </div>;
+}
+
+function Boundary({ title, items }: { title: string; items: string[] }) {
+  return <article className="bg-[#111b16] p-6 md:p-8"><h3 className="font-heading text-2xl font-700">{title}</h3><ul className="mt-6 space-y-3">{items.map((item) => <li key={item} className="flex gap-3 text-sm leading-6 text-white/66"><span className="mt-2 h-1.5 w-1.5 shrink-0 bg-[#d6c07f]" />{item}</li>)}</ul></article>;
 }
